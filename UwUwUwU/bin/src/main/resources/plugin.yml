@@ -1,0 +1,4 @@
+name: jumpboost
+version: '${project.version}'
+main: jumpboost.uwu.UwU
+api-version: 1.19

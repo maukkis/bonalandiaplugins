@@ -1,0 +1,4 @@
+name: UwUMULEPLUGIN
+version: '${project.version}'
+main: uwu.uwumuleplugin.UwUMULEPLUGIN
+api-version: 1.19
