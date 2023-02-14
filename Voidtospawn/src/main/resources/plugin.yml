@@ -1,0 +1,4 @@
+name: Voidtospawn
+version: '${project.version}'
+main: uwu.voidtospawn.Voidtospawn
+api-version: 1.19
