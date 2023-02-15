@@ -11,28 +11,30 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Voidtospawn extends JavaPlugin implements Listener {
+public final class Voidtospawn extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        System.out.println("voidtospawn has started");
-        getServer().getPluginManager().registerEvents(this, this);
+        // Plugin startup logic
 
     }
 
     @Override
     public void onDisable() {
-        System.out.println("voidtospawn has stopped");
+        // Plugin shutdown logic
     }
 
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
+        // Check if entity is a player and damage cause is falling
         if (event.getEntity() instanceof Player && event.getCause() == DamageCause.VOID) {
             Player player = (Player) event.getEntity();
+            // Get world and teleport player to surface
             World world = player.getWorld();
             Location spawnLocation = world.getSpawnLocation();
             player.teleport(spawnLocation);
+            // Cancel the damage event to prevent player from dying
             event.setCancelled(true);
         }
     }

@@ -1,0 +1,6 @@
+name: Spectatorondie
+version: '${project.version}'
+main: uwu.spectatorondie.Spectatorondie
+api-version: 1.19
+authors: [ maukkis ]
+description: spectator on die
