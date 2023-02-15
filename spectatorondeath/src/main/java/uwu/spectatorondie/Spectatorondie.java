@@ -7,6 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
 public final class Spectatorondie extends JavaPlugin implements Listener {
 
@@ -26,5 +28,12 @@ public final class Spectatorondie extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         event.getEntity().setGameMode(GameMode.SPECTATOR);
+    }
+
+    @EventHandler
+    public void onPlayerRespawn(PlayerRespawnEvent event) {
+        if (event.getPlayer().getGameMode() == GameMode.SPECTATOR) {
+            event.setRespawnLocation(event.getPlayer().getLocation());
+        }
     }
 }
