@@ -1,0 +1,8 @@
+name: Piilostacommand
+version: '${project.version}'
+main: uwu.piilostacommand.Piilostacommand
+api-version: 1.19
+authors: [ maukkis ]
+commands:
+  start:
+    description: aloittaa "piilosta pelimuodon"
