@@ -12,8 +12,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
-
 import org.bukkit.World;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -79,6 +80,9 @@ public final class Piilostacommand extends JavaPlugin implements Listener {
                                 meta.setDisplayName("Ticket");
                                 ticket.setItemMeta(meta);
                                 p.getInventory().addItem(ticket);
+                            } else{
+                                // blindness bonanzafiniin
+                                p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 30, 255));
                             }
                         }
                         cancel();
@@ -106,6 +110,25 @@ public final class Piilostacommand extends JavaPlugin implements Listener {
                 }
             }
         }
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                // pistää redstone torchin -33 234 -8
+                World world = Bukkit.getWorld("Piilosta2");
+                Location loc = new Location(world, -33, 234, -8);
+                Block block = loc.getBlock();
+                block.setType(Material.REDSTONE_TORCH);
+
+                // oottaa 1 sec
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        // fillaa sen airil
+                        block.setType(Material.AIR);
+                    }
+                }.runTaskLater(Piilostacommand.this, 20L);
+            }
+        }.runTaskLater(this, 5 * 20L);
     }
     // antaa pelaajille ticketin jos ne on missannu start komennon
     @EventHandler
